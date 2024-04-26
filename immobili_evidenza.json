@@ -1,0 +1,59 @@
+[
+  {
+    "id": "36218272",
+    "titolo": "Casa di montagna",
+    "prezzo": "450000",
+    "affitto": "false",
+    "vendita": "false",
+    "descrizione": "orem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet nulla convallis, rutrum risus eget, tempus nibh. Aliquam ultrices dui ut mi vulputate, ac posuere ipsum euismod. Vivamus at justo nunc. Maecenas sed tortor sit amet mauris pulvinar egestas faucibus in tellus. Suspendisse ac purus auctor, tincidunt nisi et, sollicitudin magna. Sed euismod ultrices nisi. Integer ac sapien quam. Nulla posuere ante a velit luctus, nec cursus velit feugiat. In non condimentum nibh. Maecenas quis metus vitae orci faucibus mollis. Donec condimentum, justo vel egestas ultrices, est leo ultrices nunc, a porta augue eros ut purus. Sed tincidunt, est sit amet tincidunt consectetur, felis velit imperdiet enim, a iaculis nulla erat tincidunt ex. Cras dictum turpis a lectus consequat, et cursus mauris viverra. In interdum tortor quam, a efficitur sem facilisis non.",
+    "indirizzo": "via palazzi 3",
+    "anno_costruzione": "2001",
+    "metratura": "300",
+    "num_bagni": "1",
+    "num_locali": "1",
+    "garage": "true",
+    "giardino": "false",
+    "immagini": [
+      "img\\property\\casa2-36218270.jpeg"
+    ],
+    "evidenza": true
+  },
+  {
+    "id": "36561023",
+    "titolo": "Appartamento",
+    "prezzo": "10000000",
+    "affitto": "false",
+    "vendita": "false",
+    "descrizione": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet nulla convallis, rutrum risus eget, tempus nibh. Aliquam ultrices dui ut mi vulputate, ac posuere ipsum euismod. Vivamus at justo nunc. Maecenas sed tortor sit amet mauris pulvinar egestas faucibus in tellus. Suspendisse ac purus auctor, tincidunt nisi et,",
+    "indirizzo": "Via bagni 11",
+    "anno_costruzione": "1990",
+    "metratura": "200",
+    "num_bagni": "3",
+    "num_locali": "1",
+    "garage": "true",
+    "giardino": "true",
+    "immagini": [
+      "img\\property\\casa1-36561021.jpeg"
+    ],
+    "evidenza": true
+  },
+  {
+    "id": "37260330",
+    "titolo": "testcasa",
+    "prezzo": "100",
+    "affitto": "false",
+    "vendita": "true",
+    "descrizione": "prova",
+    "indirizzo": "123",
+    "anno_costruzione": "1999",
+    "metratura": "100",
+    "num_bagni": "3",
+    "num_locali": "4",
+    "garage": "false",
+    "giardino": "false",
+    "immagini": [
+      "img\\property\\case-da-sogno-37260328.jpeg"
+    ],
+    "evidenza": true
+  }
+]

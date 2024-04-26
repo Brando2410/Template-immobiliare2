@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Area Gestionale - Gestione Immobili</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        font-family: "Work Sans", "Helvetica Neue", "Helvetica", "Arial",
+          "sans-serif";
+        background: linear-gradient(#e66465, #9198e5);
+        background-attachment: fixed;
+      }
+      .auto-resize {
+        overflow-y: hidden;
+      }
+      .card-title {
+        color: #e66465;
+        font-size: 1.5rem;
+      }
+
+      .card-body {
+        background-color: antiquewhite;
+        padding: 2rem;
+      }
+
+      .btn-secondary {
+        background-color: #e66465;
+        border-color: #e66465;
+      }
+
+      .btn-secondary:hover {
+        background-color: #d9534f;
+        border-color: #d9534f;
+      }
+
+      .title {
+        padding: 1rema;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <center>
+        <h1
+          class="pb-5 mb-5"
+          style="font-size: 64px; border-bottom: 4px solid black"
+        >
+          <b>Area Gestionale - Gestione Immobili</b>
+        </h1>
+        <div class="col-md-6 d-flex justify-content-center">
+          <form id="form-accesso" class="w-50">
+            <div class="mb-3 flex-grow-1">
+              <input
+                type="password"
+                class="form-control form-control-sm"
+                id="password"
+                placeholder="Password"
+                autocomplete="new-password"
+                required
+              />
+            </div>
+            <div class="d-flex justify-content-center">
+              <button type="submit" class="btn btn-danger">Accedi</button>
+            </div>
+          </form>
+        </div>
+      </center>
+      <div id="contenuto" style="display: none">
+        <div class="row gx-5">
+          <div
+            class="col-md-4"
+            style="background-color: rgba(0, 0, 0, 0.2); padding: 3rem"
+          >
+            <div class="title mb-5">
+              <center>
+                <h2 style="font-size: 48px">Aggiungi un nuovo immobile:</h2>
+              </center>
+            </div>
+            <form id="form-immobile">
+              <div class="mb-3 mt-3">
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  id="titolo"
+                  placeholder="Titolo"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="number"
+                  class="form-control form-control-sm"
+                  id="prezzo"
+                  placeholder="Prezzo"
+                  min="0"
+                  required
+                />
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 w-50">
+                  <div class="mb-3 form-check">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="affitto"
+                      name="tipoContratto"
+                      onclick="handleCheckbox(this)"
+                    />
+                    <label class="form-check-label" for="affitto"
+                      >Affitto</label
+                    >
+                  </div>
+                </div>
+                <div class="col-md-6 w-50">
+                  <div class="mb-3 form-check">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="vendita"
+                      name="tipoContratto"
+                      onclick="handleCheckbox(this)"
+                    />
+                    <label class="form-check-label" for="vendita"
+                      >Vendita</label
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <textarea
+                  class="form-control form-control-sm auto-resize"
+                  id="descrizione"
+                  placeholder="Descrizione"
+                  oninput="autoResize(this)"
+                  required
+                ></textarea>
+              </div>
+              <div class="mb-3">
+                <input
+                  type="string"
+                  class="form-control form-control-sm"
+                  id="indirizzo"
+                  placeholder="Indirizzo"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="number"
+                  class="form-control form-control-sm"
+                  id="anno_costruzione"
+                  placeholder="Anno di costruzione"
+                  min="1900"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="number"
+                  class="form-control form-control-sm"
+                  id="metratura"
+                  placeholder="Metratura"
+                  min="0"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="number"
+                  class="form-control form-control-sm"
+                  id="num_bagni"
+                  placeholder="Numero di bagni"
+                  min="0"
+                  required
+                />
+              </div>
+              <div class="mb-4">
+                <input
+                  type="number"
+                  class="form-control form-control-sm"
+                  id="num_locali"
+                  placeholder="Numero di locali"
+                  min="0"
+                  required
+                />
+              </div>
+              <div class="row">
+                <div class="col-md-6 w-50">
+                  <div class="mb-3 form-check">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="garage"
+                      name="garage"
+                      onclick="handleCheckbox(this)"
+                    />
+                    <label class="form-check-label" for="garage">Garage</label>
+                  </div>
+                </div>
+                <div class="col-md-6 w-50">
+                  <div class="mb-3 form-check">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      name="giardino"
+                      id="giardino"
+                      onclick="handleCheckbox(this)"
+                    />
+                    <label class="form-check-label" for="giardino"
+                      >Giardino</label
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="immagini" class="form-label"
+                  >Carica immagini:</label
+                >
+                <input
+                  type="file"
+                  class="form-control form-control-sm"
+                  id="immagini"
+                  name="immagini"
+                  accept="image/*"
+                  multiple
+                />
+              </div>
+              <div class="d-flex justify-content-center mb-5">
+                <button type="submit" class="mt-2 btn btn-danger">
+                  Aggiungi Immobile
+                </button>
+              </div>
+            </form>
+          </div>
+          <div
+            class="col-md-8 col-sm-12"
+            style="background-color: rgba(0, 0, 0, 0.2); padding: 3rem"
+          >
+            <div class="row mx-0">
+              <div class="title mb-5">
+                <center>
+                  <h2 style="font-size: 64px">Immobili caricati</h2>
+                </center>
+              </div>
+              <div
+                class="mt-3 col-md-12 col-lg-6 col-sm-12"
+                id="lista-immobili-col-1"
+              >
+                <!-- Lista degli immobili caricati dinamicamente da backend verranno visualizzati qui -->
+              </div>
+              <div
+                class="mt-3 col-md-12 col-lg-6 col-sm-12"
+                id="lista-immobili-col-2"
+              >
+                <!-- Lista degli immobili caricati dinamicamente da backend verranno visualizzati qui -->
+              </div>
+            </div>
+            <div
+              class="d-flex justify-content-around align-items-center mt-3 mb-3"
+            >
+              <button
+                type="button"
+                class="btn btn-secondary mx-2 mx-sm-0"
+                id="prevPage"
+              >
+                Precedente
+              </button>
+              <div class="flex">
+                <span
+                  >Pagina <span id="currentPage">1</span> di
+                  <span id="totalPages">1</span></span
+                >
+              </div>
+
+              <button
+                type="button"
+                class="btn btn-secondary mx-2 mx-sm-0"
+                id="nextPage"
+              >
+                Successiva
+              </button>
+            </div>
+            <div class="d-flex justify-content-center align-items-center mb-3">
+              <button
+                type="button"
+                class="btn btn-danger mt-3"
+                onclick="caricaTuttiImmobili()"
+              >
+                Carica tutti
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="row gx-5 mb-5 mt-5"
+          style="
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+            @media (max-width: 576px) {
+              padding: 1rem;
+            }
+          "
+        >
+          <div class="col-12 mb-5">
+            <div class="row">
+              <div
+                class="col-12 pb-2 mb-3"
+                style="border-bottom: 2px solid black"
+              >
+                <center>
+                  <h2 style="font-size: 64px">Valutazione immobili</h2>
+                </center>
+              </div>
+              <div
+                class="col-12 row justify-content-center d-flex"
+                id="messaggi"
+              ></div>
+
+              <center>
+                <button
+                  class="btn btn-danger mt-4"
+                  onclick=" caricaTutteLeValutazioni()"
+                >
+                  Carica messaggi
+                </button>
+              </center>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="row mb-4">
+              <div class="col-lg-3 col-md-3 col-sm-12 container">
+                <div>
+                  <center>
+                    <form>
+                      <label for="password" class="form-label mt-2"
+                        ><h2>Cambia Password:</h2></label
+                      >
+                      <input
+                        type="password"
+                        class="form-control mt-2"
+                        id="site-password"
+                        name="password"
+                        placeholder="Nuova Password"
+                        autocomplete="new-password"
+                      />
+                    </form>
+                  </center>
+                </div>
+              </div>
+              <div class="col-12 justify-content-center">
+                <center>
+                  <button
+                    class="btn btn-danger mt-4"
+                    onclick="changePassword()"
+                  >
+                    Cambia
+                  </button>
+                </center>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function handleCheckbox(checkbox) {
+        const checkboxes = document.getElementsByName("tipoContratto");
+        checkboxes.forEach((cb) => {
+          if (cb !== checkbox) {
+            cb.checked = false;
+          }
+        });
+      }
+
+      function autoResize(textarea) {
+        textarea.style.height = "auto";
+        textarea.style.height = textarea.scrollHeight + "px";
+      }
+
+      const cardsPerPage = 4;
+      let currentPage = 1;
+      let totalPages = 1;
+
+      function calculateTotalPages() {
+        const totalCards = document.querySelectorAll(".card").length;
+        totalPages = Math.ceil(totalCards / cardsPerPage);
+        document.getElementById("totalPages").textContent = totalPages;
+      }
+
+      function displayCards() {
+        const allCards = document.querySelectorAll(".card");
+        const startIndex = (currentPage - 1) * cardsPerPage;
+        const endIndex = startIndex + cardsPerPage;
+
+        allCards.forEach((card, index) => {
+          if (index >= startIndex && index < endIndex) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+
+        const col1 = document.getElementById("lista-immobili-col-1");
+        const col2 = document.getElementById("lista-immobili-col-2");
+        col1.innerHTML = "";
+        col2.innerHTML = "";
+        allCards.forEach((card, index) => {
+          if (index % 2 === 0) {
+            col1.appendChild(card.cloneNode(true));
+          } else {
+            col2.appendChild(card.cloneNode(true));
+          }
+        });
+
+        document.getElementById("currentPage").textContent = currentPage;
+      }
+
+      document.getElementById("prevPage").addEventListener("click", () => {
+        if (currentPage > 1) {
+          currentPage--;
+          displayCards();
+        }
+      });
+      document.getElementById("nextPage").addEventListener("click", () => {
+        const totalCards = document.querySelectorAll(".card").length;
+        const totalPages = Math.ceil(totalCards / cardsPerPage);
+
+        if (currentPage < totalPages) {
+          currentPage++;
+          displayCards();
+        }
+      });
+      document
+        .getElementById("form-accesso")
+        .addEventListener("submit", verificaPassword);
+
+      document
+        .getElementById("form-immobile")
+        .addEventListener("submit", aggiungiImmobile);
+
+      function caricaImmobili() {
+        displayCards();
+      }
+
+      function verificaPassword(event) {
+        event.preventDefault();
+        const passwordInserita = document.getElementById("password").value;
+        if (passwordInserita === "") return alert("Inserisci la password.");
+        fetch("/api/verifica-password", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ password: passwordInserita }),
+        })
+          .then(async (response) => {
+            if (response.ok) {
+              const data = await response.json();
+              if (data.success === false) {
+                return alert(data.message);
+              }
+              document.getElementById("form-accesso").style.display = "none";
+              document.getElementById("contenuto").style.display = "block";
+              caricaImmobili();
+            } else {
+              alert("Password errata. Riprova.");
+            }
+          })
+          .catch((error) => {
+            console.error(
+              "Si è verificato un errore durante la richiesta:",
+              error
+            );
+            alert(
+              "Si è verificato un errore durante la richiesta. Riprova più tardi."
+            );
+          });
+      }
+
+      function aggiungiImmobile(event) {
+        event.preventDefault();
+        const password = document.getElementById("password").value;
+        const titolo = document.getElementById("titolo").value;
+        const prezzo = document.getElementById("prezzo").value;
+        const indirizzo = document.getElementById("indirizzo").value;
+        const anno_costruzione =
+          document.getElementById("anno_costruzione").value;
+        const descrizione = document.getElementById("descrizione").value;
+        const metratura = document.getElementById("metratura").value;
+        const num_bagni = document.getElementById("num_bagni").value;
+        const num_locali = document.getElementById("num_locali").value;
+        const affitto = document.getElementById("affitto").checked;
+        const vendita = document.getElementById("vendita").checked;
+        const immagini = document.getElementById("immagini").files;
+        const garage = document.getElementById("garage").checked;
+        const giardino = document.getElementById("giardino").checked;
+
+        if (password === "") {
+          alert("Inserisci la password.");
+          return;
+        }
+
+        if (titolo === "") {
+          alert("Inserisci il titolo.");
+          return;
+        }
+
+        if (prezzo === "") {
+          alert("Inserisci il prezzo.");
+          return;
+        }
+
+        if (indirizzo === "") {
+          alert("Inserisci l'indirizzo.");
+          return;
+        }
+
+        if (descrizione === "") {
+          alert("Inserisci la descrizione.");
+          return;
+        }
+
+        if (anno_costruzione === "") {
+          alert("Inserisci l'anno di costruzione.");
+          return;
+        }
+
+        if (metratura === "") {
+          alert("Inserisci la metratura.");
+          return;
+        }
+
+        if (num_bagni === "") {
+          alert("Inserisci il numero di bagni.");
+          return;
+        }
+
+        if (num_locali === "") {
+          alert("Inserisci il numero di locali.");
+          return;
+        }
+        const formData = new FormData();
+        formData.append("password", password);
+        formData.append("titolo", titolo);
+        formData.append("prezzo", prezzo);
+        formData.append("indirizzo", indirizzo);
+        formData.append("anno_costruzione", anno_costruzione);
+        formData.append("descrizione", descrizione);
+        formData.append("metratura", metratura);
+        formData.append("num_bagni", num_bagni);
+        formData.append("num_locali", num_locali);
+        formData.append("affitto", affitto);
+        formData.append("vendita", vendita);
+        formData.append("garage", garage);
+        formData.append("giardino", giardino);
+        for (const immagine of immagini) {
+          formData.append("immagini", immagine);
+        }
+        fetch("/api/aggiungi-immobile", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            alert(data.message);
+            document.getElementById("titolo").value = "";
+            document.getElementById("prezzo").value = "";
+            document.getElementById("descrizione").value = "";
+            document.getElementById("metratura").value = "";
+            document.getElementById("num_bagni").value = "";
+            document.getElementById("num_locali").value = "";
+            document.getElementById("indirizzo").value = "";
+            document.getElementById("anno_costruzione").value = "";
+            document.getElementById("affitto").checked = false;
+            document.getElementById("vendita").checked = false;
+            document.getElementById("garage").checked = false;
+            document.getElementById("giardino").checked = false;
+          });
+      }
+
+      function evidenza(immobileId) {
+        fetch("/api/evidenza", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            password: document.getElementById("password").value,
+            id: immobileId,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              caricaTuttiImmobili();
+            } else {
+              console.error(
+                "Errore durante la messa in evidenza dell'immobile:",
+                data.message
+              );
+            }
+          });
+      }
+
+      function eliminaImmobile(immobileId) {
+        fetch("/api/rimuovi-immobile", {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            password: document.getElementById("password").value,
+            id: immobileId,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              console.log("Immobile eliminato con successo.");
+              caricaTuttiImmobili();
+            } else {
+              console.error(
+                "Errore durante l'eliminazione dell'immobile:",
+                data.message
+              );
+            }
+          });
+      }
+
+      function caricaTuttiImmobili() {
+        const password = document.getElementById("password").value;
+        if (password === "") return alert("Inserisci la password.");
+        fetch("/api/immobili", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ password }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success === false) {
+              return alert(data.message);
+            }
+            const immobili = data.immobili;
+            const listaImmobiliColonna1 = document.getElementById(
+              "lista-immobili-col-1"
+            );
+            const listaImmobiliColonna2 = document.getElementById(
+              "lista-immobili-col-2"
+            );
+            listaImmobiliColonna1.innerHTML = "";
+            listaImmobiliColonna2.innerHTML = "";
+
+            immobili.forEach((immobile, index) => {
+              let affittoString =
+                immobile.affitto == "true" ? " al mese" : " in vendita";
+              const immobileHTML = `
+              <div class="card mb-3">
+                <div class="card-body" style="background: rgba(0, 0, 0, 0.05); padding: 0.8rem">
+                  <center><h5 class="card-title mb-3"><b>${
+                    immobile.titolo
+                  }</b></h5></center>
+                  <p class="card-text"><b>Prezzo:</b> ${
+                    immobile.prezzo
+                  } €${affittoString}</p>
+                  <p class="card-text"><b>Descrizione:</b> ${
+                    immobile.descrizione
+                  }</p>
+                  <p class="card-text"><b>Indirizzo:</b> ${
+                    immobile.indirizzo
+                  }</p>
+                  <p class="card-text"><b>Anno di costruzione:</b> ${
+                    immobile.anno_costruzione
+                  }</p>
+                  <div class="row mt-3 mb-3">
+                    <div class="col-md-4">
+                        <p class="card-text"><b>Mq:</b> ${
+                          immobile.metratura
+                        } m²</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="card-text"><b>Bagni:</b> ${
+                          immobile.num_bagni
+                        }</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="card-text"><b>Locali:</b> ${
+                          immobile.num_locali
+                        }</p>
+                    </div>
+                </div>
+                <div class="row mt-3 mb-2">
+                    <div class="col-md-6">
+                        <p class="card-text"><b>Garage:</b> ${
+                          immobile.garage ? "Sì" : "No"
+                        }</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="card-text"><b>Giardino:</b> ${
+                          immobile.giardino ? "Sì" : "No"
+                        }</p>
+                    </div>
+                </div>
+                  <p style="display: none"> ${immobile.id}</p>
+                  <center>
+                      <button type="button" class="del-btn btn btn-secondary mt-3 mx-3" onclick="eliminaImmobile('${
+                        immobile.id
+                      }')">Elimina</button>
+                      <button type="button" class="del-btn btn btn-secondary mt-3 mx-3" onclick="evidenza('${
+                        immobile.id
+                      }')">
+                        ${
+                          immobile.evidenza
+                            ? "Rimuovi in evidenza"
+                            : "Aggiungi in evidenza"
+                        }
+                      </button>
+                  </center>
+                </div>
+              </div>
+            `;
+              if (index % 2 === 0) {
+                listaImmobiliColonna1.innerHTML += immobileHTML;
+              } else {
+                listaImmobiliColonna2.innerHTML += immobileHTML;
+              }
+            });
+
+            document.querySelectorAll(".card").forEach((card) => {
+              card.style.display = "none";
+            });
+
+            calculateTotalPages();
+            displayCards();
+          });
+      }
+
+      function caricaTutteLeValutazioni() {
+        const password = document.getElementById("password").value;
+        if (password === "") return alert("Inserisci la password.");
+        fetch("/api/valutazioni", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            password,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success === false) {
+              return alert(data.message);
+            }
+            const messaggi = data.valutazioni;
+            const messaggiDiv = document.getElementById("messaggi");
+            messaggiDiv.innerHTML = "";
+            messaggi.forEach((messaggio) => {
+              let date = new Date(messaggio.date).toLocaleString();
+              messaggiDiv.innerHTML += `
+              <div class="mx-2 col-lg-5 col-sm-12 col-md-12 mb-3" style="background-color: rgba(0, 0, 0, 0.4);color:white; padding: 1rem" >
+                <div class="container">              
+                  <h5 class="card-title mb-2">${messaggio.subject}</h5>
+                  <h6 class="card-subtitle mb-2">${messaggio.email} - ${messaggio.name}</h6>
+                  <div class="card-text p-2 mb-2" >
+                    <p style="background: rgb(230 100 100 / 20%);padding:4px;border-radius:8px">${messaggio.message}</p>
+                    <span style="font-size:14px;color: #9198e5;">${date}</span>
+                  </div>           
+                  <center><button type="button" class="btn btn-secondary" onclick="removeValutazione('${messaggio.id}')">Rimuovi</button></center>
+                </div>      
+              </div>
+            `;
+            });
+          });
+      }
+      function removeValutazione(id) {
+        if (confirm("Sei sicuro di voler eliminare questa valutazione?")) {
+          fetch("/api/rimuovi-valutazione", {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              password: document.getElementById("password").value,
+              id: id,
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                console.log("Valutazione eliminata con successo.");
+                caricaTutteLeValutazioni();
+              } else {
+                console.error(
+                  "Errore durante l'eliminazione della valutazione:",
+                  data.message
+                );
+              }
+            });
+        } else {
+          return;
+        }
+      }
+      function changePassword() {
+        const newPassword = document.getElementById("site-password").value;
+        const password = document.getElementById("password").value;
+        if (password === "") return alert("Inserisci la password.");
+        fetch("/api/cambia-password", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ password, newPassword }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success === false) {
+              return alert(data.message);
+            }
+            alert(data.message);
+          });
+      }
+      /*
+      function changeEmail() {
+        const email = document.getElementById("newsletterEmail").value;
+        const emailPassword = document.getElementById("newsletterPwd").value;
+        const password = document.getElementById("password").value;
+
+        if (email === "" || emailPassword === "") {
+          return alert("Inserisci email e password.");
+        }
+        fetch("/api/change-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ password, email, emailPassword }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success === false) {
+              return alert(data.message);
+            }
+            alert(data.message);
+
+            document.getElementById("newsletterEmail").value = "";
+            document.getElementById("newsletterPwd").value = "";
+          });
+      }
+    */
+    </script>
+  </body>
+</html>

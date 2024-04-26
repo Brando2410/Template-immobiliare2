@@ -1,0 +1,18 @@
+[
+  {
+    "id": "40950293",
+    "date": "2024-03-13T14:42:30.293Z",
+    "name": "Luca",
+    "email": "example@gmail.com",
+    "subject": "Casa al mare",
+    "message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper ante lorem, sed commodo mauris sodales ut. Sed accumsan lorem massa, nec lacinia massa interdum vel. Phasellus vel massa quis turpis pulvinar tristique. Morbi vel turpis lectus. Curabitur et quam erat. Phasellus vel odio accumsan, dapibus nisl a, eleifend turpis. Nullam quis sem mi. In hac habitasse platea dictumst. Sed a luctus risus. Cras suscipit placerat odio ac elementum."
+  },
+  {
+    "id": "41021887",
+    "date": "2024-03-13T14:43:41.887Z",
+    "name": "Maria",
+    "email": "maria1@outlook.com",
+    "subject": "Appartamento Bologna",
+    "message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper ante lorem, sed commodo mauris sodales ut. Sed accumsan lorem massa, nec lacinia massa interdum vel. Phasellus vel massa quis turpis pulvinar tristique. Morbi vel turpis lectus. Curabitur et quam erat. Phasellus vel odio accumsan, dapibus nisl a, eleifend turpis. "
+  }
+]

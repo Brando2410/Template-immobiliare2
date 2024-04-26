@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <title>Immboiliare Template</title>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Immobiliare HTML Template" />
+    <meta name="keywords" content="immobiliare,real estate, html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="img/favicon.ico" rel="shortcut icon" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i,900%7cRoboto:400,400i,500,500i,700,700i&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/slicknav.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
+    <script src="js/jquery-3.2.1.min.js"></script>
+  </head>
+
+  <body style="display: block">
+    <div id="preloder">
+      <div class="loader"></div>
+    </div>
+
+    <header class="header-section header-bg-3">
+      <a href="index.html" class="site-logo">
+        <img src="img/icons/logo3.png" alt style="height: 96px" />
+      </a>
+      <nav class="header-nav">
+        <ul class="main-menu">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="immobili.html">Compra immobili</a></li>
+          <li><a href="contact.html">Valuta immobile</a></li>
+          <li><a href="about-us.html">Chi siamo</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section
+      class="hero-section"
+      style="
+        background-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.2),
+            rgba(0, 0, 0, 0.6)
+          ),
+          url('img/icons/img2.jpeg');
+        background-repeat: no-repeat;
+        background-size: cover;
+      "
+    >
+      <div class="container">
+        <div class="hero-warp">
+          <form class="main-search-form">
+            <p>
+              Benvenuti nel nostro sito immobiliare, il vostro punto di
+              riferimento per trovare la casa dei sogni. Con una vasta gamma di
+              proprietà, dai moderni appartamenti urbani alle incantevoli ville
+              in campagna, siamo qui per guidarvi verso la scelta perfetta.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="property-section loan-wrap">
+      <div class="container section-title">
+        <h2>Immobili In Evidenza</h2>
+      </div>
+      <div
+        id="property-row"
+        class="container"
+        style="padding: 0 !important"
+      ></div>
+      <!-- populate here -->
+    </section>
+
+    <footer class="footer-section footer-bg-1">
+      <div class="container">
+        <div class="row text-white">
+          <div class="col-lg-4">
+            <div class="footer-widger">
+              <div class="about-widget">
+                <div class="aw-text">
+                  <img src="img/icons/logo3.png" alt />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-3 col-sm-6">
+            <div class="footer-widger">
+              <h1>IMMOBILIARE BAGNACAVALLO</h1>
+              <p class="p-1">Via G. Mazzini n. 20 - Bagnavavallo (RA)</p>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          Copyright &copy;
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          All rights reserved
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.slicknav.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/index.js"></script>
+    <script type="text/javascript" src="./slick/slick.min.js"></script>
+  </body>
+</html>
